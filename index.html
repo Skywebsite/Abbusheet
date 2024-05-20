@@ -80,6 +80,17 @@ function carousel() {
 <p class="w3-center">
 <button type="submit"  class="w3-button w3-section w3-blue w3-ripple">Send</button>
 </p>
+</form>
+  <script>
+  const scriptURL = '<SCRIPT URL>'
+  const form = document.forms['submit-to-google-sheet']
 
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
